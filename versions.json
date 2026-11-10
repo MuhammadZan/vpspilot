@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "published_at": "2026-11-10T19:14:31Z",
+  "components": {
+    "server": {
+      "channels": {
+        "stable": "0.2.0"
+      },
+      "releases": [
+        {
+          "version": "0.2.0",
+          "date": "2026-11-10",
+          "notes": "### Updates\n\n- VPSpilot now updates itself. When a new version is out, an \"Update available\" button appears in the header with the release notes; one click installs it with a backup, a health check and an automatic rollback if anything goes wrong. `vps-pilot upgrade` does the same from the server.\n- Releases are signed, and the server refuses anything that isn't.\n\n### Importing apps\n\n- VPSpilot now scans a repository and detects the apps in it, for Node, Python, Go, Rust, Java, PHP and Ruby projects and for folders with a Dockerfile.\n- An import checklist lets you create and deploy several apps from one repository at once.\n\n### Web addresses and security\n\n- Apps get an automatic HTTPS address, either under your wildcard apps domain or on a free sslip.io address.\n- The dashboard itself gets an automatic HTTPS address.\n- Two-factor sign-in with an authenticator app, with recovery codes.\n\n### Environment variables\n\n- Each variable has icons to reveal and edit its value.\n- Typing `${{service.KEY}}` suggests matching services and keys.\n\n### Server commands\n\n- `vps-pilot update admin` changes the admin account.\n- `vps-pilot reset-mfa` resets two-factor sign-in.\n- `vps-pilot panel-url` prints the dashboard address.\n\n### Builds and deploys\n\n- Apps build with the repo's Dockerfile, or with Railpack when there is none. Nixpacks is no longer used.\n- Dockerfiles in a monorepo build from the repository root.\n- Builds run one at a time and wait in a queue.\n- GitHub webhooks are set up per repository and deploy every service that matches.\n- Old builds are cleaned up to free disk space.\n\n### Dashboard\n\n- The dashboard is served compressed and loads in one piece on slow connections.\n- Copy buttons also work over plain HTTP.",
+          "pulled": false,
+          "assets": {
+            "linux-amd64": {
+              "url": "https://vpspilot.online/download/v0.2.0/vps-pilot-linux-amd64",
+              "sha256": "2271407748fbc490e5448a4d0fd5865352c0045d95788deab2cdf8a91fffa8eb"
+            },
+            "linux-arm64": {
+              "url": "https://vpspilot.online/download/v0.2.0/vps-pilot-linux-arm64",
+              "sha256": "51df07fcd9f56857fca82cd6f30553ad8d5f34620b1399ae460c804e5dfe328f"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
