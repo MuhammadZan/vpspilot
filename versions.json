@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "published_at": "2026-11-10T19:14:31Z",
+  "published_at": "2026-11-14T10:31:14Z",
   "components": {
     "server": {
       "channels": {
-        "stable": "0.2.0"
+        "stable": "0.2.1"
       },
       "releases": [
         {
@@ -20,6 +20,22 @@
             "linux-arm64": {
               "url": "https://vpspilot.online/download/v0.2.0/vps-pilot-linux-arm64",
               "sha256": "51df07fcd9f56857fca82cd6f30553ad8d5f34620b1399ae460c804e5dfe328f"
+            }
+          }
+        },
+        {
+          "version": "0.2.1",
+          "date": "2026-11-14",
+          "notes": "- Each deployment shows whether it was built from a Dockerfile or with Railpack.\n- A domain that routes to a different port than the one the service listens on now shows a warning on its row.\n- If two-factor setup was restarted in another tab, entering a code from the old QR code now says so instead of reporting an invalid code.\n- Dockerfile apps created from the import checklist no longer get install, build or start commands they don't use.\n- Updates are more careful: pressing Ctrl-C during `vps-pilot upgrade` before the swap stops cleanly, and a new update waits until the previous one has fully finished.",
+          "pulled": false,
+          "assets": {
+            "linux-amd64": {
+              "url": "https://vpspilot.online/download/v0.2.1/vps-pilot-linux-amd64",
+              "sha256": "e59027ec58d655423fbd948cf81b53fccba592e4303c8a67fa9819cc96f4168f"
+            },
+            "linux-arm64": {
+              "url": "https://vpspilot.online/download/v0.2.1/vps-pilot-linux-arm64",
+              "sha256": "17e55db4ce256d68d2e9bbe52b42c6b92731789909a2c0f9d8019edb6d948729"
             }
           }
         }
