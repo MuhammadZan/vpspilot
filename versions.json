@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "published_at": "2026-11-14T10:31:14Z",
+  "published_at": "2026-11-16T08:11:20Z",
   "components": {
     "server": {
       "channels": {
-        "stable": "0.2.1"
+        "stable": "0.3.0"
       },
       "releases": [
         {
@@ -36,6 +36,22 @@
             "linux-arm64": {
               "url": "https://vpspilot.online/download/v0.2.1/vps-pilot-linux-arm64",
               "sha256": "17e55db4ce256d68d2e9bbe52b42c6b92731789909a2c0f9d8019edb6d948729"
+            }
+          }
+        },
+        {
+          "version": "0.3.0",
+          "date": "2026-11-16",
+          "notes": "### Deployments\n\n- The Deployments tab has a \"New deployment\" button. Deploy the latest commit of any branch, or pick a specific commit: GitHub repos list the 20 most recent commits, and any repo accepts a pasted commit SHA. The service keeps following its own branch for automatic deploys.\n- Deploying a specific commit, including a rollback that needs a rebuild, now fetches exactly that commit. If it can't be checked out, the deployment fails with \"Could not check out commit …\" instead of quietly building the latest code.\n\n### Importing apps\n\n- `docker-compose.yml` and `compose.yaml` files are imported. Services with `build:` become apps, and `postgres`, `redis` and `minio` images become managed databases and storage with freshly generated credentials. Settings that can't be carried over, and development-only setups, are listed on each row.\n- Connection strings that pointed at a compose database are switched to the new managed one.\n- Apps can build from a Dockerfile anywhere in the repository, as set by the compose file.\n- When a push adds a new app to a project's repository, a banner offers to review and deploy it. Dismissed apps are never suggested again and stay available from \"+ New service → From this project's repo\".\n- A service whose folder disappeared from the repository is tagged \"folder no longer in repo\". Nothing is deleted.",
+          "pulled": false,
+          "assets": {
+            "linux-amd64": {
+              "url": "https://vpspilot.online/download/v0.3.0/vps-pilot-linux-amd64",
+              "sha256": "d78b26dd7f17745b1f054c2d0f786003a3192536c37358a71b1c0c563f4c6d33"
+            },
+            "linux-arm64": {
+              "url": "https://vpspilot.online/download/v0.3.0/vps-pilot-linux-arm64",
+              "sha256": "a912d43f3f719c422b10e0446815cb23f095774624b700bc991a01960f8cb7ff"
             }
           }
         }
