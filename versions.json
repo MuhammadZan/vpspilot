@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "published_at": "2026-11-16T08:11:20Z",
+  "published_at": "2026-11-18T05:58:59Z",
   "components": {
     "server": {
       "channels": {
-        "stable": "0.3.0"
+        "stable": "0.3.1"
       },
       "releases": [
         {
@@ -52,6 +52,22 @@
             "linux-arm64": {
               "url": "https://vpspilot.online/download/v0.3.0/vps-pilot-linux-arm64",
               "sha256": "a912d43f3f719c422b10e0446815cb23f095774624b700bc991a01960f8cb7ff"
+            }
+          }
+        },
+        {
+          "version": "0.3.1",
+          "date": "2026-11-18",
+          "notes": "### Deployments\n\n- Each service has its own build time limit, set in the new Deploys panel. The default is now 30 minutes instead of 20, and it can be raised, set to a custom number of seconds or removed. When a build runs too long, the log says which limit stopped it.\n- A new deployment can wait before it replaces the live one, for 10 or 30 minutes or a custom time. While it waits, the old version keeps serving your domains and the new one is on a preview link. \"Promote now\" switches early. If a newer deployment finishes first, it takes the waiting one's place. Both versions run during the wait, so the service uses twice the memory.\n- Rollbacks always switch at once. \"Switch immediately\" in the New deployment dialog does the same for one deploy.\n- Queued and building deployments have a Cancel button.\n- Once a repository's GitHub webhook is set up, the panel says \"Synced\", with a \"Re-sync\" link in case the hook was changed on GitHub.",
+          "pulled": false,
+          "assets": {
+            "linux-amd64": {
+              "url": "https://vpspilot.online/download/v0.3.1/vps-pilot-linux-amd64",
+              "sha256": "0eca09f266bca17753d9a8fcfc4cf370f4cce570bfc47055d1e0602a493cd421"
+            },
+            "linux-arm64": {
+              "url": "https://vpspilot.online/download/v0.3.1/vps-pilot-linux-arm64",
+              "sha256": "847008911c7a78d3dbf76671f0e029f2557cc4ac3f350d41065cbb2169210e68"
             }
           }
         }
