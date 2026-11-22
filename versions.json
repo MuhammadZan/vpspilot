@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "published_at": "2026-11-18T05:58:59Z",
+  "published_at": "2026-11-22T16:28:07Z",
   "components": {
     "server": {
       "channels": {
-        "stable": "0.3.1"
+        "stable": "0.4.0"
       },
       "releases": [
         {
@@ -68,6 +68,22 @@
             "linux-arm64": {
               "url": "https://vpspilot.online/download/v0.3.1/vps-pilot-linux-arm64",
               "sha256": "847008911c7a78d3dbf76671f0e029f2557cc4ac3f350d41065cbb2169210e68"
+            }
+          }
+        },
+        {
+          "version": "0.4.0",
+          "date": "2026-11-22",
+          "notes": "### Building on GitHub Actions\n\n- A new build setting, **Where to build**, in the Deploys panel: **This server** (the default) or **GitHub Actions**, for apps that build from a GitHub repository. Building on GitHub saves your server's CPU and memory.\n- Setup opens a pull request that adds `.github/workflows/vpspilot-\u003cservice\u003e.yml`. Nothing is committed to your deploy branch without you: merge the pull request, then press \"Use GitHub Actions\". The panel follows each step and warns if the workflow file later disappears.\n- Images are built on GitHub and pushed to GitHub's registry (GHCR), then pulled and started on your server the usual way, delayed switch included. A deployment shows \"Building on GitHub\" with a \"View run on GitHub\" link, and Cancel stops the run.\n- Picking a commit in the New deployment dialog uses that commit's image if it already exists, and otherwise starts the workflow for it. Rollbacks reuse the image they ran before.\n- GitHub stops builds after 60 minutes. The build time limit then only covers pulling and starting the image.\n- The GitHub connection needs new permissions (workflows, actions, secrets and variables, and reading packages). **Existing users reconnect GitHub once** in Settings. The setup card lists exactly what is missing.\n- GitHub's fine-grained tokens can't read GHCR. Add a `ghcr.io` registry with a classic token that has only `read:packages`, or reconnect GitHub: reconnecting grants the package read permission.\n- Variables your Dockerfile declares with `ARG` are passed as build arguments. Docker records their values in the image history, so anyone who can pull the image can read them. On GitHub Actions the image goes to GHCR, which is public for public repositories. For secrets, read the `vpspilot_env` BuildKit secret instead: `RUN --mount=type=secret,id=vpspilot_env . /run/secrets/vpspilot_env` (a file of `export KEY='value'` lines).\n- Dockerfile builds on your own server do the same for declared `ARG`s. Those images stay on the server.\n- Your variables are stored on GitHub as an encrypted Actions secret so the build can use them, and their values are masked in the Actions logs.\n- A push builds with the settings saved before it. After changing build settings, the next push or a New deployment uses them.\n- Deleting a service removes its settings from GitHub but leaves the workflow file and the GHCR images in place.\n- Switching back to This server is immediate. The workflow file stays in your repository but does nothing, and you can delete it. If removing VPSpilot's settings from GitHub fails, the Deploys panel says so and offers Retry.\n\n### Docker image services\n\n- **+ New service → Docker image** runs any image, such as `nginx:1.27`, with private registry logins, volumes, a command, variables, a port and domains.\n- Rollbacks run the exact image digest that ran before.\n- **Redeploy** pulls the tag again. Tags are not updated automatically.\n- Removing a volume from the list never deletes its data. Deleting a service asks whether to delete its volumes, and the box is unchecked by default.\n\n### Registries\n\n- A new Registries section in Settings stores logins for private registries. Tokens are encrypted and never shown again.",
+          "pulled": false,
+          "assets": {
+            "linux-amd64": {
+              "url": "https://vpspilot.online/download/v0.4.0/vps-pilot-linux-amd64",
+              "sha256": "f1ec0436d0237704a3f3432073e418eaf9b7c7cf6b3885bb1450d20fef2f73cb"
+            },
+            "linux-arm64": {
+              "url": "https://vpspilot.online/download/v0.4.0/vps-pilot-linux-arm64",
+              "sha256": "2f99ec113f179262b139bdf9348a73a8f32db1865b301b8cc814e53563364138"
             }
           }
         }
